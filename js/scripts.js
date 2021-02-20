@@ -1,24 +1,25 @@
 
 // business logic
 
-//two dice Objects
 function Dice() {
   this.diceOne = 1;
-  this.diceTwo = 1;
-  this.diceValue = 0;
 }
 
 Dice.prototype.roll = function() {
   this.diceOne = Math.floor((Math.random()*6)+1);
-  this.diceTwo = Math.floor((Math.random()*6)+1);
-  if (this.diceOne === 1 && this.diceTwo === 1) {
-    this.diceValue = "oink oink"
-  } else if (this.diceOne === 1 || this.diceTwo === 1) {
-    this.diceValue = 0;
+  if (this.diceOne === 1) {
+    this.diceOne = 0;
   } else {
-    this.diceValue = this.diceOne + this.diceTwo
+  return this.diceOne
   }
 }
+
+
+console.log()
+
+
+let testDice = new Dice()
+console.log(testDice.roll())
 
 // Player object
 function Player(name) {

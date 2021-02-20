@@ -1,37 +1,54 @@
-
-// business logic
-
 function Dice() {
   this.diceOne = 1;
 }
 
-Dice.prototype.roll = function() {
+Dice.prototype.rollDice = function() {
   this.diceOne = Math.floor((Math.random()*6)+1);
   if (this.diceOne === 1) {
-    this.diceOne = 0;
+    this.diceValue = 0;
+    console.log(this.diceValue)
   } else {
-  return this.diceOne
+  this.diceValue = this.diceOne
+  console.log(this.diceValue)
+  }
+}
+
+//players object
+function Player(name) {
+	this.name = name;
+  this.isTurn = true;
+  this.turnScore = 0;
+}
+
+//keep score
+function KeepScore(totalScore) {
+	this.totalScore = totalScore;
+  while (totalScore < 100) {
+  totalScore++;
+  console.log("the total score is ");
+  }
+}
+
+KeepScore.prototype.turnScore = function() {
+	if (this.diceValue === 0) {
+  console.log("Lost all ur points")
+  } else {
+  console.log("we need to add points")
   }
 }
 
 
-console.log()
 
 
+
+
+//testing data
 let testDice = new Dice()
-console.log(testDice.roll())
+console.log(testDice.rollDice())
 
-// Player object
-function Player(name) {
-
-}
-// keep scores
-function Game() {
-
-}
-
-//
-Game.pro
+let player1 = new Player("Jack")
+let player2 = new Player("Astro")
+//console.log(player1)
 
 
 

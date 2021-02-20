@@ -9,7 +9,7 @@ function Player(name) {
   this.turnScore = 0;
   this.totalScore = 0;
   this.dice = new Dice();
-  this.dice.rollDice()
+  
 
 }
 
@@ -25,11 +25,32 @@ Dice.prototype.rollDice = function() {
 }
 
 Player.prototype.score = function() {
+	this.dice.rollDice()
   if (this.dice.roll === 0) {
     this.turnScore = 0;
     return this.turnScore
   } else {
   	this.turnScore += this.dice.roll
-    return this.turnScore
   }
 }
+
+
+
+
+
+
+//testing data
+//let testDice = new Dice()
+//console.log(testDice.rollDice())
+
+
+let player1 = new Player("Jack")
+player1.score()
+console.log("player 1, turn 1: " + player1.turnScore)
+
+
+player1.score()
+console.log("player 1, turn 2: " + player1.turnScore)
+
+player1.score()
+console.log("player 1, turn 3: " + player1.turnScore)

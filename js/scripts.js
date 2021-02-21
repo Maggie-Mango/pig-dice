@@ -34,22 +34,24 @@ Dice.prototype.rollDice = function() {
 
 Player.prototype.calcScore = function() {
 	this.dice.rollDice()
+  isWinner();
   if (this.dice.roll === 0) {
-    switchPlayers();
-  } else {
-  	this.score += this.dice.roll
+   switchPlayers();
+    } else {
+   	this.score += this.dice.roll
   }
 }
 
-
-
-
-
+function isWinner() {
+	if ((player1.score >= 100) || (player2.score >= 100)) {
+  alert("winner winner chicken dinner")
+	}
+}
 
 //ui logic 
 $(document).ready(function() {
 	$("button.btn-roll").click(function(event) {
-  	if (player1.isTurn !== false) {
+  	if (player1.isTurn === true) {
       player1.calcScore();
       $('#p1-total').html(player1.score);
       $('#p1-roll').html(player1.dice.roll);
@@ -57,12 +59,14 @@ $(document).ready(function() {
       player2.calcScore();
       $('#p2-total').html(player2.score);
       $('#p2-roll').html(player2.dice.roll)
-    }
-    });
-    });
-
+    } else {
+    	alert("winner winner chicken dinner!")
+   }
+  });
+ });
+    
 $(document).ready(function() {
-  $("button.btn-hold").click(function(event) {
-      switchPlayers();
-    });
-    });
+	$("button.btn-hold").click(function(event) {
+  		switchPlayers();
+ });
+});

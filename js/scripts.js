@@ -1,16 +1,19 @@
+
+
 //business logic for dice
 function Dice() {
 	this.diceValue=1;
   this.roll=0;
 }
 
-function Player(name) {
-	this.name = name;
-  this.turnScore = 0;
-  this.totalScore = 0;
+function Player() {
+  this.score = 0;
   this.dice = new Dice()
   this.isTurn = 'yes'
 }
+//global Players
+player1 = new Player();
+player2 = new Player();
 
 Dice.prototype.rollDice = function() {
   this.diceValue = Math.floor((Math.random()*6)+1);
@@ -23,34 +26,24 @@ Dice.prototype.rollDice = function() {
 	}
 }
 
-Player.prototype.score = function() {
+Player.prototype.calcScore = function() {
 	this.dice.rollDice()
   if (this.dice.roll === 0) {
-    this.turnScore = 0;
+    this.score = 0;
     this.isTurn = 'no'
   } else {
-  	this.turnScore += this.dice.roll
+  	this.score += this.dice.roll
   }
 }
 
 
-//UI logic
 
 
-
-
-//testing data
-//let testDice = new Dice()
-//console.log(testDice.rollDice())
-
-
-let player1 = new Player("Jack")
-player1.score()
-console.log("player 1, turn 1: " + player1.turnScore)
-
-
-player1.score()
-console.log("player 1, turn 2: " + player1.turnScore)
-
-player1.score()
-console.log("player 1, turn 3: " + player1.turnScore)
+//ui logic 
+$(document).ready(function() {
+	$("button.btn-roll").click(function(event) {
+  	player1.calcScore();
+    $('#roll').html(player1.score);
+    console.log(player1.dice.roll)
+  })
+})

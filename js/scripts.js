@@ -8,9 +8,8 @@ function Player(name) {
 	this.name = name;
   this.turnScore = 0;
   this.totalScore = 0;
-  this.dice = new Dice();
-  
-
+  this.dice = new Dice()
+  this.isTurn = 'yes'
 }
 
 Dice.prototype.rollDice = function() {
@@ -28,13 +27,14 @@ Player.prototype.score = function() {
 	this.dice.rollDice()
   if (this.dice.roll === 0) {
     this.turnScore = 0;
-    return this.turnScore
+    this.isTurn = 'no'
   } else {
   	this.turnScore += this.dice.roll
   }
 }
 
 
+//UI logic
 
 
 

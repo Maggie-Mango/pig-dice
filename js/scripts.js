@@ -29,7 +29,6 @@ Dice.prototype.rollDice = function() {
 Player.prototype.calcScore = function() {
 	this.dice.rollDice()
   if (this.dice.roll === 0) {
-    this.score = 0;
     this.isTurn = 'no'
   } else {
   	this.score += this.dice.roll
@@ -43,7 +42,7 @@ Player.prototype.calcScore = function() {
 $(document).ready(function() {
 	$("button.btn-roll").click(function(event) {
   	player1.calcScore();
-    $('#roll').html(player1.score);
-    console.log(player1.dice.roll)
+    $('#p1-total').html(player1.score);
+    $('#p1-roll').html(player1.dice.roll);
   })
 })

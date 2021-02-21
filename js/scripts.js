@@ -60,3 +60,9 @@ $(document).ready(function() {
     }
     });
     });
+
+$(document).ready(function() {
+  $("button.btn-hold").click(function(event) {
+      switchPlayers();
+    });
+    });

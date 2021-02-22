@@ -26,7 +26,7 @@ The player that reaches 100 points first wins.
 
 ## Link
 
-https://maggie-mango.github.io/{pig-dice}
+https://maggie-mango.github.io/pig-dice
 
 ## Known Bugs
 
